@@ -181,7 +181,7 @@ class PersonDetectionGUI:
                     try:
                         detections = self.detector.detect_persons(frame)
                         count = self.tracker.update(detections)
-                        self.counter.update_count(count)
+                        self.counter.update_ids(count)
                         
                         # Dibujar detecciones
                         self.draw_detections(frame, self.tracker.get_tracked_objects())
