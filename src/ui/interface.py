@@ -295,7 +295,7 @@ class PersonDetectionGUI:
             from src.detection.detect import PersonDetector
             from src.tracking.object_tracker import SimpleTracker
             from src.occupancy.count import OccupancyCounter
-            from src.preprocessing.image_preprocessing import ImageProcessor
+            from src.processing.image_processing import ImageProcessor
             from src.system_logger import SystemLogger
 
             # Inicializar componentes
