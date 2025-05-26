@@ -512,15 +512,17 @@ class PersonDetectionGUI:
 
         try:
             image = self.current_frame.copy()
-
-            if filter_type == 'grayscale':
+            
+            if filter_type == 'histogram':
+                # Mostrar diálogo para configurar parámetros de histograma
+                self.show_histogram_dialog(image)
+                return
+            elif filter_type == 'grayscale':
                 processed = self.processor.convert_to_grayscale(image)
                 # Convertir de vuelta a BGR para mostrar
                 processed = cv2.cvtColor(processed, cv2.COLOR_GRAY2BGR)
             elif filter_type == 'denoise':
                 processed = self.processor.remove_noise(image)
-            elif filter_type == 'histogram':
-                processed = self.processor.histogram_equalization(image)
             elif filter_type == 'erosion':
                 gray = self.processor.convert_to_grayscale(image)
                 processed = self.processor.erosion(gray)
@@ -583,3 +585,197 @@ class PersonDetectionGUI:
         """Maneja el cierre de la aplicación."""
         self.stop_camera()
         self.root.destroy()
+
+    def show_histogram_dialog(self, image):
+        """Muestra un diálogo para configurar parámetros de ecualización de histograma."""
+        # Crear ventana de diálogo
+        dialog = tk.Toplevel(self.root)
+        dialog.title("Configuración de Ecualización de Histograma")
+        dialog.geometry("450x300")
+        dialog.resizable(False, False)
+        dialog.transient(self.root)
+        dialog.grab_set()  # Hacer modal
+        
+        # Variables
+        use_adaptive = tk.BooleanVar(value=False)
+        clip_limit = tk.DoubleVar(value=2.0)
+        grid_size = tk.IntVar(value=8)
+        
+        # Frame principal
+        main_frame = ttk.Frame(dialog, padding=10)
+        main_frame.pack(fill=tk.BOTH, expand=True)
+        
+        # Tipo de ecualización
+        ttk.Label(main_frame, text="Tipo de ecualización:", font=("Arial", 10, "bold")).grid(
+            row=0, column=0, columnspan=2, sticky=tk.W, pady=(0, 10))
+        
+        ttk.Radiobutton(
+            main_frame, 
+            text="Ecualización normal", 
+            variable=use_adaptive, 
+            value=False,
+            command=lambda: update_ui()
+        ).grid(row=1, column=0, sticky=tk.W, padx=20)
+        
+        ttk.Radiobutton(
+            main_frame, 
+            text="Ecualización adaptativa (CLAHE)", 
+            variable=use_adaptive, 
+            value=True,
+            command=lambda: update_ui()
+        ).grid(row=1, column=1, sticky=tk.W)
+        
+        # Separador
+        ttk.Separator(main_frame, orient=tk.HORIZONTAL).grid(
+            row=2, column=0, columnspan=2, sticky=tk.EW, pady=10)
+        
+        # Parámetros de CLAHE
+        params_frame = ttk.LabelFrame(main_frame, text="Parámetros CLAHE")
+        params_frame.grid(row=3, column=0, columnspan=2, sticky=tk.EW, pady=5)
+        
+        ttk.Label(params_frame, text="Límite de contraste:").grid(
+            row=0, column=0, sticky=tk.W, padx=5, pady=5)
+        
+        clip_scale = ttk.Scale(
+            params_frame, 
+            from_=0.5, 
+            to=5.0, 
+            orient=tk.HORIZONTAL, 
+            variable=clip_limit,
+            length=200
+        )
+        clip_scale.grid(row=0, column=1, sticky=tk.EW, padx=5, pady=5)
+        
+        clip_value = ttk.Label(params_frame, textvariable=clip_limit)
+        clip_value.grid(row=0, column=2, padx=5)
+        
+        ttk.Label(params_frame, text="Tamaño de cuadrícula:").grid(
+            row=1, column=0, sticky=tk.W, padx=5, pady=5)
+        
+        grid_scale = ttk.Scale(
+            params_frame, 
+            from_=2, 
+            to=16, 
+            orient=tk.HORIZONTAL, 
+            variable=grid_size,
+            length=200
+        )
+        grid_scale.grid(row=1, column=1, sticky=tk.EW, padx=5, pady=5)
+        
+        grid_value = ttk.Label(params_frame, textvariable=grid_size)
+        grid_value.grid(row=1, column=2, padx=5)
+        
+        # Vista previa
+        preview_var = tk.BooleanVar(value=True)
+        preview_check = ttk.Checkbutton(
+            main_frame, 
+            text="Vista previa en tiempo real", 
+            variable=preview_var,
+            command=lambda: preview_change()
+        )
+        preview_check.grid(row=4, column=0, columnspan=2, sticky=tk.W, pady=10)
+        
+        # Botones
+        btn_frame = ttk.Frame(main_frame)
+        btn_frame.grid(row=5, column=0, columnspan=2, sticky=tk.EW)
+        
+        ttk.Button(
+            btn_frame, 
+            text="Aplicar", 
+            command=lambda: apply_and_close()
+        ).pack(side=tk.RIGHT, padx=5)
+        
+        ttk.Button(
+            btn_frame, 
+            text="Cancelar", 
+            command=dialog.destroy
+        ).pack(side=tk.RIGHT, padx=5)
+        
+        # Estado actual
+        self.histogram_preview_active = False
+        
+        def update_ui():
+            """Actualiza la UI según el tipo de ecualización seleccionada."""
+            if use_adaptive.get():
+                for child in params_frame.winfo_children():
+                    child.configure(state=tk.NORMAL)
+            else:
+                for child in params_frame.winfo_children():
+                    child.configure(state=tk.DISABLED)
+            
+            if preview_var.get():
+                generate_preview()
+        
+        def preview_change():
+            """Maneja cambios en la opción de vista previa."""
+            self.histogram_preview_active = preview_var.get()
+            if self.histogram_preview_active:
+                generate_preview()
+            else:
+                # Restaurar imagen original en vista previa
+                self.display_frame(image, self.processed_label)
+        
+        def generate_preview():
+            """Genera una vista previa con los parámetros actuales."""
+            if not self.histogram_preview_active:
+                return
+                
+            try:
+                # Aplicar filtro con parámetros actuales
+                processed = self.processor.histogram_equalization(
+                    image,
+                    use_adaptive=use_adaptive.get(),
+                    clip_limit=clip_limit.get(),
+                    grid_size=int(grid_size.get())
+                )
+                
+                # Mostrar resultado
+                self.processed_frame = processed
+                self.display_frame(processed, self.processed_label)
+            except Exception as e:
+                messagebox.showerror("Error", f"Error generando vista previa: {str(e)}")
+        
+        def apply_and_close():
+            """Aplica los cambios y cierra el diálogo."""
+            try:
+                # Aplicar filtro con parámetros actuales
+                processed = self.processor.histogram_equalization(
+                    image,
+                    use_adaptive=use_adaptive.get(),
+                    clip_limit=clip_limit.get(),
+                    grid_size=int(grid_size.get())
+                )
+                
+                # Mostrar resultado
+                self.processed_frame = processed
+                self.display_frame(processed, self.processed_label)
+                
+                # Registrar operación
+                filter_type = "Histograma adaptativo (CLAHE)" if use_adaptive.get() else "Histograma normal"
+                if self.logger:
+                    if use_adaptive.get():
+                        self.logger.info(f"Filtro aplicado: {filter_type} [clip_limit={clip_limit.get()}, grid_size={grid_size.get()}]")
+                    else:
+                        self.logger.info(f"Filtro aplicado: {filter_type}")
+                
+                dialog.destroy()
+            except Exception as e:
+                messagebox.showerror("Error", f"Error aplicando filtro: {str(e)}")
+                if self.logger:
+                    self.logger.error(f"Error aplicando histograma: {str(e)}")
+        
+        # Configurar eventos para vista previa en tiempo real
+        clip_scale.bind("<Motion>", lambda e: generate_preview())
+        grid_scale.bind("<Motion>", lambda e: generate_preview())
+        
+        # Inicializar UI
+        update_ui()
+        
+        # Centrar en la ventana principal
+        dialog.update_idletasks()
+        x = self.root.winfo_x() + (self.root.winfo_width() - dialog.winfo_width()) // 2
+        y = self.root.winfo_y() + (self.root.winfo_height() - dialog.winfo_height()) // 2
+        dialog.geometry(f"+{x}+{y}")
+        
+        # Esperar a que se cierre el diálogo
+        self.root.wait_window(dialog)
