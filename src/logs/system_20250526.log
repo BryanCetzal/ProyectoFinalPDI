@@ -12,3 +12,52 @@
 2025-05-26 02:49:09,022 - PersonDetectionSystem - INFO - Filtro aplicado: denoise
 2025-05-26 02:49:10,063 - PersonDetectionSystem - INFO - Filtro aplicado: erosion
 2025-05-26 02:50:45,725 - PersonDetectionSystem - INFO - Sistema detenido
+2025-05-26 08:33:20,683 - PersonDetectionSystem - INFO - Sistema iniciado
+2025-05-26 08:33:33,472 - PersonDetectionSystem - INFO - Sistema detenido
+2025-05-26 08:33:34,402 - PersonDetectionSystem - INFO - Sistema detenido
+2025-05-26 08:34:16,830 - PersonDetectionSystem - INFO - Sistema iniciado
+2025-05-26 08:34:31,388 - PersonDetectionSystem - INFO - Filtro aplicado: dilation
+2025-05-26 08:34:37,054 - PersonDetectionSystem - INFO - Filtro aplicado: Histograma normal
+2025-05-26 08:34:45,968 - PersonDetectionSystem - INFO - Filtro aplicado: Histograma adaptativo (CLAHE) [clip_limit=1.0, grid_size=2]
+2025-05-26 08:34:53,627 - PersonDetectionSystem - INFO - Filtro aplicado: Histograma adaptativo (CLAHE) [clip_limit=4.0, grid_size=9]
+2025-05-26 08:34:58,293 - PersonDetectionSystem - INFO - Sistema detenido
+2025-05-26 08:34:59,948 - PersonDetectionSystem - INFO - Sistema detenido
+2025-05-26 08:38:43,250 - PersonDetectionSystem - INFO - Sistema iniciado
+2025-05-26 08:38:47,835 - PersonDetectionSystem - WARNING - ADVERTENCIA: Alta ocupación detectada (75.0%)
+2025-05-26 08:38:49,133 - PersonDetectionSystem - WARNING - ADVERTENCIA: Alta ocupación detectada (75.0%)
+2025-05-26 08:38:51,400 - PersonDetectionSystem - WARNING - ADVERTENCIA: Alta ocupación detectada (75.0%)
+2025-05-26 08:38:51,719 - PersonDetectionSystem - WARNING - ALERTA MÁXIMA: Capacidad completa o excedida (100.0%)
+2025-05-26 08:38:54,119 - PersonDetectionSystem - WARNING - ADVERTENCIA: Alta ocupación detectada (75.0%)
+2025-05-26 08:38:54,554 - PersonDetectionSystem - WARNING - ALERTA MÁXIMA: Capacidad completa o excedida (100.0%)
+2025-05-26 08:38:55,800 - PersonDetectionSystem - WARNING - ADVERTENCIA: Alta ocupación detectada (75.0%)
+2025-05-26 08:38:56,235 - PersonDetectionSystem - WARNING - ALERTA MÁXIMA: Capacidad completa o excedida (100.0%)
+2025-05-26 08:39:00,214 - PersonDetectionSystem - WARNING - ADVERTENCIA: Alta ocupación detectada (75.0%)
+2025-05-26 08:39:01,757 - PersonDetectionSystem - WARNING - ADVERTENCIA: Alta ocupación detectada (75.0%)
+2025-05-26 08:39:05,912 - PersonDetectionSystem - WARNING - ALERTA MÁXIMA: Capacidad completa o excedida (100.0%)
+2025-05-26 08:39:06,126 - PersonDetectionSystem - WARNING - ADVERTENCIA: Alta ocupación detectada (75.0%)
+2025-05-26 08:39:07,025 - PersonDetectionSystem - WARNING - ALERTA MÁXIMA: Capacidad completa o excedida (100.0%)
+2025-05-26 08:39:07,957 - PersonDetectionSystem - WARNING - ADVERTENCIA: Alta ocupación detectada (75.0%)
+2025-05-26 08:39:08,288 - PersonDetectionSystem - WARNING - ADVERTENCIA: Alta ocupación detectada (75.0%)
+2025-05-26 08:39:08,720 - PersonDetectionSystem - WARNING - ALERTA MÁXIMA: Capacidad completa o excedida (100.0%)
+2025-05-26 08:39:09,774 - PersonDetectionSystem - WARNING - ADVERTENCIA: Alta ocupación detectada (75.0%)
+2025-05-26 08:39:18,763 - PersonDetectionSystem - INFO - Filtro aplicado: denoise
+2025-05-26 08:39:21,411 - PersonDetectionSystem - INFO - Filtro aplicado: dilation
+2025-05-26 08:39:22,330 - PersonDetectionSystem - INFO - Filtro aplicado: erosion
+2025-05-26 08:39:23,364 - PersonDetectionSystem - INFO - Filtro aplicado: grayscale
+2025-05-26 08:39:26,008 - PersonDetectionSystem - INFO - Filtro aplicado: dilation
+2025-05-26 08:39:31,114 - PersonDetectionSystem - INFO - Filtro aplicado: opening
+2025-05-26 08:39:32,458 - PersonDetectionSystem - INFO - Filtro aplicado: dilation
+2025-05-26 08:39:36,788 - PersonDetectionSystem - INFO - Filtro aplicado: opening
+2025-05-26 08:39:38,481 - PersonDetectionSystem - INFO - Filtro aplicado: dilation
+2025-05-26 08:39:41,719 - PersonDetectionSystem - INFO - Filtro aplicado: opening
+2025-05-26 08:39:44,118 - PersonDetectionSystem - INFO - Filtro aplicado: dilation
+2025-05-26 08:39:46,422 - PersonDetectionSystem - INFO - Filtro aplicado: closing
+2025-05-26 08:39:52,539 - PersonDetectionSystem - INFO - Filtro aplicado: Histograma normal
+2025-05-26 08:40:00,673 - PersonDetectionSystem - INFO - Filtro aplicado: Histograma adaptativo (CLAHE) [clip_limit=4.0, grid_size=9]
+2025-05-26 08:40:11,603 - PersonDetectionSystem - INFO - Sistema detenido
+2025-05-26 08:40:20,373 - PersonDetectionSystem - INFO - Imagen cargada y analizada: C:/Users/Bello/Downloads/2personasimagen.png - 2 personas detectadas
+2025-05-26 08:40:25,950 - PersonDetectionSystem - INFO - Filtro aplicado: dilation
+2025-05-26 08:40:27,125 - PersonDetectionSystem - INFO - Filtro aplicado: opening
+2025-05-26 08:40:29,751 - PersonDetectionSystem - INFO - Filtro aplicado: closing
+2025-05-26 08:40:33,595 - PersonDetectionSystem - INFO - Sistema detenido
+2025-05-26 08:40:39,390 - PersonDetectionSystem - INFO - Sistema detenido
