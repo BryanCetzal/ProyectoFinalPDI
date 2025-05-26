@@ -1,0 +1,14 @@
+2025-05-26 02:47:48,497 - PersonDetectionSystem - INFO - Sistema iniciado
+2025-05-26 02:48:09,253 - PersonDetectionSystem - INFO - Sistema detenido
+2025-05-26 02:48:10,962 - PersonDetectionSystem - INFO - Filtro aplicado: dilation
+2025-05-26 02:48:12,376 - PersonDetectionSystem - INFO - Filtro aplicado: closing
+2025-05-26 02:48:14,331 - PersonDetectionSystem - INFO - Filtro aplicado: Histograma normal
+2025-05-26 02:48:15,396 - PersonDetectionSystem - INFO - Filtro aplicado: grayscale
+2025-05-26 02:48:22,532 - PersonDetectionSystem - INFO - Filtro aplicado: Histograma adaptativo (CLAHE) [clip_limit=3.5241935483870965, grid_size=6]
+2025-05-26 02:48:31,787 - PersonDetectionSystem - INFO - Filtro aplicado: Histograma adaptativo (CLAHE) [clip_limit=4.0, grid_size=8]
+2025-05-26 02:48:37,862 - PersonDetectionSystem - INFO - Filtro aplicado: Histograma adaptativo (CLAHE) [clip_limit=3.0, grid_size=9]
+2025-05-26 02:48:44,607 - PersonDetectionSystem - INFO - Filtro aplicado: Histograma adaptativo (CLAHE) [clip_limit=1.0, grid_size=4]
+2025-05-26 02:49:00,977 - PersonDetectionSystem - INFO - Imagen cargada y analizada: C:/Users/Bello/Downloads/2personasimagen.png - 2 personas detectadas
+2025-05-26 02:49:09,022 - PersonDetectionSystem - INFO - Filtro aplicado: denoise
+2025-05-26 02:49:10,063 - PersonDetectionSystem - INFO - Filtro aplicado: erosion
+2025-05-26 02:50:45,725 - PersonDetectionSystem - INFO - Sistema detenido
