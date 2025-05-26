@@ -473,7 +473,7 @@ class PersonDetectionGUI:
             messagebox.showwarning("Advertencia", "No hay frame para capturar")
 
     def load_image(self):
-        """Carga una imagen desde archivo."""
+        """Carga una imagen desde archivo y detecta personas."""
         filetypes = [
             ("Imágenes", "*.png *.jpg *.jpeg *.bmp *.tiff"),
             ("PNG", "*.png"),
@@ -489,11 +489,66 @@ class PersonDetectionGUI:
             try:
                 image = cv2.imread(filepath)
                 if image is not None:
-                    self.current_frame = image
+                    self.current_frame = image.copy()
+                    
+                    # Mostrar la imagen original
                     self.display_frame(image, self.original_label)
-                    messagebox.showinfo("Éxito", "Imagen cargada correctamente")
+                    
+                    # Verificar si los componentes están inicializados
+                    if not hasattr(self, 'detector') or self.detector is None:
+                        if not self.initialize_components():
+                            messagebox.showinfo("Información", "Imagen cargada sin detección (componentes no inicializados)")
+                            return
+                    
+                    # Realizar detección en la imagen
+                    try:
+                        # Hacer una copia para la visualización
+                        display_image = image.copy()
+                        
+                        # Detectar personas
+                        detections = self.detector.detect_persons(image)
+                        
+                        # Resetear tracker para nueva imagen
+                        self.tracker = self.tracker.__class__()
+                        
+                        # Actualizar tracker con nuevas detecciones
+                        self.tracker.update(detections)
+                        
+                        # Obtener objetos trackeados
+                        tracked_objects = self.tracker.get_tracked_objects()
+                        
+                        # Actualizar contador con IDs activos
+                        current_ids = list(tracked_objects.keys())
+                        self.counter.update_ids(current_ids)
+                        self.current_count = self.counter.get_current_count()
+                        
+                        # Dibujar detecciones en la imagen
+                        self.draw_detections(display_image, tracked_objects)
+                        
+                        # Mostrar imagen con detecciones
+                        self.display_frame(display_image, self.original_label)
+                        
+                        # Actualizar información en la interfaz
+                        self.count_label.config(text=f"Personas detectadas: {self.current_count}")
+                        self.update_capacity_display()
+                        
+                        # Mensaje con el conteo
+                        messagebox.showinfo("Detección Completada", 
+                                        f"Se detectaron {self.current_count} personas en la imagen.")
+                        
+                        # Procesar alertas si existen
+                        alerts = self.counter.get_alerts()
+                        for alert in alerts:
+                            if self.logger:
+                                self.logger.warning(alert['message'])
+                            
+                    except Exception as e:
+                        messagebox.showerror("Error", f"Error durante la detección: {str(e)}")
+                        if self.logger:
+                            self.logger.error(f"Error en detección de imagen: {str(e)}")
+                    
                     if self.logger:
-                        self.logger.info(f"Imagen cargada: {filepath}")
+                        self.logger.info(f"Imagen cargada y analizada: {filepath} - {self.current_count} personas detectadas")
                 else:
                     messagebox.showerror("Error", "No se pudo cargar la imagen")
             except Exception as e:
