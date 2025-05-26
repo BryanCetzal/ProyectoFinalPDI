@@ -1,0 +1,68 @@
+2025-05-25 21:41:30,637 - PersonDetectionSystem - INFO - Sistema iniciado
+2025-05-25 21:41:38,910 - PersonDetectionSystem - WARNING - ALERTA MÁXIMA: Capacidad completa o excedida (100.0%)
+2025-05-25 21:41:48,580 - PersonDetectionSystem - WARNING - ALERTA MÁXIMA: Capacidad completa o excedida (100.0%)
+2025-05-25 21:41:49,694 - PersonDetectionSystem - WARNING - ALERTA MÁXIMA: Capacidad completa o excedida (100.0%)
+2025-05-25 21:41:53,032 - PersonDetectionSystem - WARNING - ALERTA MÁXIMA: Capacidad completa o excedida (100.0%)
+2025-05-25 21:42:04,885 - PersonDetectionSystem - WARNING - ALERTA MÁXIMA: Capacidad completa o excedida (100.0%)
+2025-05-25 21:42:07,678 - PersonDetectionSystem - WARNING - ALERTA MÁXIMA: Capacidad completa o excedida (100.0%)
+2025-05-25 21:42:18,233 - PersonDetectionSystem - WARNING - ALERTA MÁXIMA: Capacidad completa o excedida (100.0%)
+2025-05-25 21:42:19,829 - PersonDetectionSystem - WARNING - ALERTA MÁXIMA: Capacidad completa o excedida (100.0%)
+2025-05-25 21:42:26,714 - PersonDetectionSystem - WARNING - ALERTA MÁXIMA: Capacidad completa o excedida (100.0%)
+2025-05-25 21:42:28,697 - PersonDetectionSystem - WARNING - ALERTA MÁXIMA: Capacidad completa o excedida (100.0%)
+2025-05-25 21:42:30,751 - PersonDetectionSystem - INFO - Filtro aplicado: grayscale
+2025-05-25 21:42:31,463 - PersonDetectionSystem - WARNING - ALERTA MÁXIMA: Capacidad completa o excedida (100.0%)
+2025-05-25 21:42:32,974 - PersonDetectionSystem - INFO - Filtro aplicado: histogram
+2025-05-25 21:42:36,094 - PersonDetectionSystem - INFO - Filtro aplicado: erosion
+2025-05-25 21:42:37,719 - PersonDetectionSystem - INFO - Filtro aplicado: opening
+2025-05-25 21:42:40,759 - PersonDetectionSystem - INFO - Filtro aplicado: closing
+2025-05-25 21:42:50,977 - PersonDetectionSystem - INFO - Filtro aplicado: histogram
+2025-05-25 21:42:54,095 - PersonDetectionSystem - WARNING - ALERTA MÁXIMA: Capacidad completa o excedida (100.0%)
+2025-05-25 21:42:59,436 - PersonDetectionSystem - WARNING - ALERTA MÁXIMA: Capacidad completa o excedida (100.0%)
+2025-05-25 21:43:00,809 - PersonDetectionSystem - WARNING - ALERTA MÁXIMA: Capacidad completa o excedida (100.0%)
+2025-05-25 21:43:11,853 - PersonDetectionSystem - WARNING - ALERTA MÁXIMA: Capacidad completa o excedida (100.0%)
+2025-05-25 21:43:13,225 - PersonDetectionSystem - WARNING - ALERTA MÁXIMA: Capacidad completa o excedida (100.0%)
+2025-05-25 21:43:23,603 - PersonDetectionSystem - INFO - Sistema detenido
+2025-05-25 21:43:58,604 - PersonDetectionSystem - INFO - Imagen procesada guardada: C:/Users/Bello/Downloads/2personasimagen.png
+2025-05-25 21:44:06,985 - PersonDetectionSystem - INFO - Imagen cargada: C:/Users/Bello/Downloads/2personasimagen.png
+2025-05-25 21:44:08,663 - PersonDetectionSystem - INFO - Filtro aplicado: erosion
+2025-05-25 21:44:09,982 - PersonDetectionSystem - INFO - Filtro aplicado: denoise
+2025-05-25 21:44:12,756 - PersonDetectionSystem - INFO - Filtro aplicado: closing
+2025-05-25 21:44:14,232 - PersonDetectionSystem - INFO - Filtro aplicado: histogram
+2025-05-25 21:44:16,109 - PersonDetectionSystem - INFO - Filtro aplicado: denoise
+2025-05-25 21:44:18,096 - PersonDetectionSystem - INFO - Filtro aplicado: grayscale
+2025-05-25 21:44:19,032 - PersonDetectionSystem - INFO - Filtro aplicado: erosion
+2025-05-25 21:44:20,303 - PersonDetectionSystem - INFO - Filtro aplicado: denoise
+2025-05-25 21:44:21,269 - PersonDetectionSystem - INFO - Filtro aplicado: opening
+2025-05-25 21:44:22,604 - PersonDetectionSystem - INFO - Filtro aplicado: closing
+2025-05-25 21:44:23,847 - PersonDetectionSystem - INFO - Filtro aplicado: histogram
+2025-05-25 21:45:24,220 - PersonDetectionSystem - INFO - Sistema detenido
+2025-05-25 22:58:46,242 - PersonDetectionSystem - INFO - Sistema iniciado
+2025-05-25 22:59:16,579 - PersonDetectionSystem - INFO - Filtro aplicado: grayscale
+2025-05-25 22:59:18,151 - PersonDetectionSystem - INFO - Filtro aplicado: erosion
+2025-05-25 22:59:19,506 - PersonDetectionSystem - INFO - Filtro aplicado: dilation
+2025-05-25 22:59:20,567 - PersonDetectionSystem - INFO - Filtro aplicado: opening
+2025-05-25 22:59:22,289 - PersonDetectionSystem - INFO - Filtro aplicado: closing
+2025-05-25 22:59:24,274 - PersonDetectionSystem - INFO - Filtro aplicado: denoise
+2025-05-25 22:59:25,594 - PersonDetectionSystem - INFO - Filtro aplicado: grayscale
+2025-05-25 22:59:26,772 - PersonDetectionSystem - INFO - Filtro aplicado: erosion
+2025-05-25 22:59:27,989 - PersonDetectionSystem - INFO - Filtro aplicado: dilation
+2025-05-25 22:59:29,256 - PersonDetectionSystem - INFO - Filtro aplicado: opening
+2025-05-25 22:59:30,303 - PersonDetectionSystem - INFO - Filtro aplicado: closing
+2025-05-25 22:59:37,956 - PersonDetectionSystem - INFO - Filtro aplicado: Histograma normal
+2025-05-25 22:59:46,896 - PersonDetectionSystem - INFO - Filtro aplicado: Histograma adaptativo (CLAHE) [clip_limit=3.0, grid_size=7]
+2025-05-25 23:00:24,366 - PersonDetectionSystem - INFO - Filtro aplicado: Histograma adaptativo (CLAHE) [clip_limit=3.0, grid_size=7]
+2025-05-25 23:00:31,257 - PersonDetectionSystem - INFO - Filtro aplicado: closing
+2025-05-25 23:00:37,480 - PersonDetectionSystem - INFO - Filtro aplicado: Histograma normal
+2025-05-25 23:00:55,682 - PersonDetectionSystem - INFO - Filtro aplicado: Histograma adaptativo (CLAHE) [clip_limit=4.0, grid_size=8]
+2025-05-25 23:02:52,974 - PersonDetectionSystem - INFO - Filtro aplicado: grayscale
+2025-05-25 23:02:57,401 - PersonDetectionSystem - INFO - Filtro aplicado: denoise
+2025-05-25 23:02:58,486 - PersonDetectionSystem - INFO - Filtro aplicado: dilation
+2025-05-25 23:02:59,653 - PersonDetectionSystem - INFO - Filtro aplicado: erosion
+2025-05-25 23:03:03,209 - PersonDetectionSystem - INFO - Filtro aplicado: Histograma normal
+2025-05-25 23:03:27,004 - PersonDetectionSystem - INFO - Filtro aplicado: grayscale
+2025-05-25 23:03:28,247 - PersonDetectionSystem - INFO - Filtro aplicado: dilation
+2025-05-25 23:03:31,824 - PersonDetectionSystem - INFO - Filtro aplicado: Histograma normal
+2025-05-25 23:03:33,975 - PersonDetectionSystem - INFO - Filtro aplicado: closing
+2025-05-25 23:03:44,179 - PersonDetectionSystem - INFO - Filtro aplicado: Histograma adaptativo (CLAHE) [clip_limit=4.0, grid_size=9]
+2025-05-25 23:04:42,532 - PersonDetectionSystem - INFO - Sistema detenido
+2025-05-25 23:07:23,424 - PersonDetectionSystem - INFO - Sistema detenido

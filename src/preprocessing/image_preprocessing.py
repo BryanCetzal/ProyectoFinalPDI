@@ -42,27 +42,27 @@ class ImageProcessor:
         return cv2.dilate(image, kernel, iterations=1)
     
     @staticmethod
-    def histogram_equalization(image):
-        """RF4: Ecualización de histograma."""
-        if len(image.shape) == 3:
-            # Imagen en color - convertir a YUV y ecualizar canal Y
-            yuv = cv2.cvtColor(image, cv2.COLOR_BGR2YUV)
-            yuv[:,:,0] = cv2.equalizeHist(yuv[:,:,0])
-            return cv2.cvtColor(yuv, cv2.COLOR_YUV2BGR)
+    def histogram_equalization(image, use_adaptive=False, clip_limit=2.0, grid_size=8):
+        """RF4: Ecualización de histograma con parámetros ajustables."""
+        if use_adaptive:
+            # Ecualización adaptativa (CLAHE)
+            if len(image.shape) == 3:
+                # Imagen en color
+                lab = cv2.cvtColor(image, cv2.COLOR_BGR2LAB)
+                clahe = cv2.createCLAHE(clipLimit=clip_limit, tileGridSize=(grid_size, grid_size))
+                lab[:,:,0] = clahe.apply(lab[:,:,0])
+                return cv2.cvtColor(lab, cv2.COLOR_LAB2BGR)
+            else:
+                # Imagen en escala de grises
+                clahe = cv2.createCLAHE(clipLimit=clip_limit, tileGridSize=(grid_size, grid_size))
+                return clahe.apply(image)
         else:
-            # Imagen en escala de grises
-            return cv2.equalizeHist(image)
-    
-    @staticmethod
-    def adaptive_histogram_equalization(image):
-        """RF4: Ecualización adaptativa de histograma."""
-        if len(image.shape) == 3:
-            # Imagen en color
-            lab = cv2.cvtColor(image, cv2.COLOR_BGR2LAB)
-            clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8,8))
-            lab[:,:,0] = clahe.apply(lab[:,:,0])
-            return cv2.cvtColor(lab, cv2.COLOR_LAB2BGR)
-        else:
-            # Imagen en escala de grises
-            clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8,8))
-            return clahe.apply(image)
+            # Ecualización normal
+            if len(image.shape) == 3:
+                # Imagen en color - convertir a YUV y ecualizar canal Y
+                yuv = cv2.cvtColor(image, cv2.COLOR_BGR2YUV)
+                yuv[:,:,0] = cv2.equalizeHist(yuv[:,:,0])
+                return cv2.cvtColor(yuv, cv2.COLOR_YUV2BGR)
+            else:
+                # Imagen en escala de grises
+                return cv2.equalizeHist(image)
